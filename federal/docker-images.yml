@@ -1,0 +1,7 @@
+images:
+  - name: "memcached"
+    version: latest
+  - name: "prom/memcached-exporter"
+    version: latest
+  - name: "grafana/enterprise-traces"
+    version: latest

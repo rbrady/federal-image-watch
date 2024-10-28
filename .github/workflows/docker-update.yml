@@ -1,0 +1,22 @@
+name: DockerImage Update Automation
+
+on:
+  pull_request:
+    types: [opened, synchronize]
+    branches: [main]
+
+jobs:
+  handle-docker-update:
+    if: github.actor == 'dependabot[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Run Image Update Script
+        run: |
+          chmod +x scripts/update-images.sh
+          ./scripts/update-images.sh
+
+      - name: Log Updated Docker Image
+        run: echo "A Docker image was updated in PR #${{ github.event.number }}"
